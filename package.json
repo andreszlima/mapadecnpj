@@ -2,8 +2,9 @@
   "name": "mapadecnpj",
   "version": "0.0.0",
   "description": "Filtre, organize e obtenha informações detalhadas e segmentadas sobre todas as empresas do Brasil",
-  "main": "server.js",
+  "main": "./source/backend_server/server.js",
   "scripts": {
+    "start": "node ./source/backend_server/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "André Lima",

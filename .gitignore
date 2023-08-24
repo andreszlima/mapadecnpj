@@ -1,1 +1,3 @@
 node_modules
+source/database_updater/bin/*
+source/database_updater/csv/*
