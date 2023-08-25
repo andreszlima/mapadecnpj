@@ -69,19 +69,20 @@ try:
         if 'Estabelecimentos' in file:
             print('Converting file: ' + file)
             df = pd.read_csv(os.path.join(os.path.dirname(__file__), 'csv', file), header=None, encoding='latin-1', delimiter=';')
+
             df[0] = df[0].astype(str).str.pad(8, side='left', fillchar='0')
             df[1] = df[1].astype(str).str.pad(4, side='left', fillchar='0')
             df[2] = df[2].astype(str).str.pad(2, side='left', fillchar='0')
             df[3] = df[3].astype(int)
             df[4] = df[4].fillna('').astype(str)
             df[5] = df[5].astype(int)
-            df[6] = df[6].replace('0', pd.NaT)
             df[6] = pd.to_datetime(df[6], format='%Y%m%d', errors='coerce')
+            df[6] = df[6].replace('', None)
             df[7] = df[7].astype(int)
             df[8] = df[8].fillna('').astype(str)
             df[9] = df[9].fillna(0).astype(int)
-            df[10] = df[10].replace('0', pd.NaT)
             df[10] = pd.to_datetime(df[10], format='%Y%m%d', errors='coerce')
+            df[10] = df[10].replace('', None)
             df[11] = df[11].astype(int)
             df[12] = df[12].astype(str)
             df[13] = df[13].astype(str)
@@ -93,24 +94,24 @@ try:
             df[19] = df[19].astype(str)
             df[20] = df[20].astype(int)
             try:
-                df[21] = df[21].fillna('').astype(str)
+                df[21] = df[21].fillna('').astype(float).astype(int).astype(str)
             except:
-                df[21] = df[21].replace('**', '').astype(str)
+                df[21] = df[21].replace('.0', '').astype(str)
             df[22] = df[22].fillna(0).astype(str)
             try:
-                df[23] = df[23].fillna('').astype(str)
+                df[23] = df[23].fillna('').astype(float).astype(int).astype(str)
             except:
-                df[23] = df[23].replace('**', '').astype(str)
+                df[23] = df[23].replace('.0', '').astype(str)
             df[24] = df[24].fillna(0).astype(str)
             try:
-                df[25] = df[25].fillna('').astype(str)
+                df[25] = df[25].fillna('').astype(float).astype(int).astype(str)
             except:
-                df[25] = df[25].replace('**', '').astype(str)
+                df[25] = df[25].replace('.0', '').astype(str)
             df[26] = df[26].fillna(0).astype(str)
             df[27] = df[27].astype(str)
             df[28] = df[28].fillna('').astype(str)
-            df[29] = df[29].replace('0', pd.NaT)
             df[29] = pd.to_datetime(df[29], format='%Y%m%d', errors='coerce')
+            df[29] = df[29].replace('', None)
             df.to_csv(os.path.join(os.path.dirname(__file__), 'csv', 'parsed_' + file), index=False, header=False)
             print('Converted ' + file)
 

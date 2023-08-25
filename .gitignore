@@ -1,3 +1,4 @@
 node_modules
 source/database_updater/bin/*
 source/database_updater/csv/*
+source/database_updater/.env
